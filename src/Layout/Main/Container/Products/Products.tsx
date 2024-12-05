@@ -9,7 +9,7 @@ export default function Products({children}:ComponentProps<"div">) {
       </h2>
       <nav className="font-bold p-4">
         <div>
-          <ul className="flex gap-4 bg-black/30 w-full p-4">
+          <ul className="flex flex-wrap gap-4 bg-black/30 w-full p-4">
            {children}
           </ul>
         </div>
