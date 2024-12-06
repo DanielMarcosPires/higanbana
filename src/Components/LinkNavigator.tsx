@@ -38,7 +38,7 @@ export default function LinkNavigator({
 
   return (
     <Link
-      className={`flex items-center justify-center flex-grow ${
+      className={`flex items-center justify-center py-4 flex-grow ${
         currentHash === href ? "sombra" : ""
       }`}
       href={href}

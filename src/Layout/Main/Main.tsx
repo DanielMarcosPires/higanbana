@@ -39,28 +39,26 @@ export default function Main() {
         msOverflowStyle: "none",
       }}
     >
-      <Banner src="banner.png" alt="hero" />
+      <Banner className="h-[350px] md:h-auto object-cover" style={{objectPosition:"46% 0"}} src="banner.png" alt="hero" />
       <Navbar>
-        <LinkNavigator
-          href={"#promocao"} extract={setFilter}        >
+        <LinkNavigator href={"#promocao"} extract={setFilter}>
           Promoção
         </LinkNavigator>
-        <LinkNavigator
-          href={"#microfone"} extract={setFilter}        >
+        <LinkNavigator href={"#microfone"} extract={setFilter}>
           Microfone
         </LinkNavigator>
-        <LinkNavigator
-          href={"#notebook"} extract={setFilter}        >
+        <LinkNavigator href={"#notebook"} extract={setFilter}>
           Notebooks
         </LinkNavigator>
-        <LinkNavigator
-          href={"#monitor"} extract={setFilter}        >
+        <LinkNavigator href={"#monitor"} extract={setFilter}>
           Monitores
         </LinkNavigator>
       </Navbar>
       <Products>
         {products
-          .filter((product: product) => product.type === removeHashFromUrl(filter))
+          .filter(
+            (product: product) => product.type === removeHashFromUrl(filter)
+          )
           .map((_product: product) => (
             <Product
               key={_product.id}
@@ -72,7 +70,7 @@ export default function Main() {
             />
           ))}
       </Products>
-      <Atendimento />
+        <Atendimento />
     </main>
   );
 }

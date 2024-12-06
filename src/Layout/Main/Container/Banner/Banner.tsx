@@ -2,10 +2,10 @@
 import React, { ComponentProps } from "react";
 
 
-export default function Banner({src,alt}:ComponentProps<"img">) {
+export default function Banner({src,alt, ...props}:ComponentProps<"img">) {
   return (
     <div>
-      <img src={src} alt={alt} />
+      <img src={src} alt={alt} {...props}/>
     </div>
   );
 }
