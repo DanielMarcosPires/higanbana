@@ -1,8 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { X } from "lucide-react";
-import React, { ComponentProps, useState } from "react";
+import React, { ComponentProps, ReactNode, useState } from "react";
 
-export default function LayoutStructure({ children }: ComponentProps<"div">) {
+interface LayoutStructureProps extends ComponentProps<"div"> {
+  children: ReactNode;
+}
+export default function LayoutStructure({ children }: LayoutStructureProps) {
   const [isActive, setIsActive] = useState(true);
   return (
     <div className="relative flex justify-between flex-col h-screen">

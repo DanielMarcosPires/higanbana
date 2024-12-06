@@ -1,17 +1,38 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "./Container/Banner/Banner";
 import Navbar from "./Container/Navbar/Navbar";
 import LinkNavigator from "@/Components/LinkNavigator";
 import Products from "./Container/Products/Products";
-import { useSearchParams } from "next/navigation";
 import Product from "@/Components/Product/Product";
+import Atendimento from "./Container/Atendimento/Atendimento";
+
+interface product {
+  id: number;
+  name: string;
+  price: number;
+  promo?: number;
+  image: string;
+  description: string;
+  type: string;
+}
 export default function Main() {
-  const searchParams = useSearchParams();
-  console.log(searchParams);
+  const [products, setProducts] = useState([]);
+  const [filter, setFilter] = useState("");
+  useEffect(() => {
+    fetch("http://localhost:3001/higanbanaProducts")
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  function removeHashFromUrl(url: string) {
+    return url.replace(/\/?#/, "");
+  }
+  console.log();
   return (
     <main
-      className="flex-grow overflow-y-auto"
+      className="flex-grow overflow-y-auto border"
       style={{
         overflow: "auto",
         scrollbarWidth: "none",
@@ -20,46 +41,38 @@ export default function Main() {
     >
       <Banner src="banner.png" alt="hero" />
       <Navbar>
-        <LinkNavigator href={"#promocao"}>Promoção</LinkNavigator>
-        <LinkNavigator href={"#Hardware"}>Hardware</LinkNavigator>
-        <LinkNavigator href={"#Notebooks"}>Notebooks</LinkNavigator>
-        <LinkNavigator href={"#Monitores"}>Monitores</LinkNavigator>
-        <LinkNavigator href={"#Atendimento"}>Atendimento</LinkNavigator>
+        <LinkNavigator
+          href={"#promocao"} extract={setFilter}        >
+          Promoção
+        </LinkNavigator>
+        <LinkNavigator
+          href={"#microfone"} extract={setFilter}        >
+          Microfone
+        </LinkNavigator>
+        <LinkNavigator
+          href={"#notebook"} extract={setFilter}        >
+          Notebooks
+        </LinkNavigator>
+        <LinkNavigator
+          href={"#monitor"} extract={setFilter}        >
+          Monitores
+        </LinkNavigator>
       </Navbar>
       <Products>
-        <Product
-          price={80}
-          title={
-            "Controle Gamesir"
-          }
-          src={"controle.webp"}
-          tipo={"hardware"}
-        />
-        <Product
-          price={690}
-          title={
-            "Monitor Top de linha"
-          }
-          src={"monitor.webp"}
-          tipo={"monitores"}
-        />
-        <Product
-          price={190}
-          title={
-            "Controle Gamesir"
-          }
-          src={"controle.webp"}
-          tipo={"hardware"}
-        />
-        <Product
-          price={1700}
-          title={
-            "Controle Sem Fio Gamesir Nova Lite Para Pc/switch Cor Space Purple"
-          }
-          src={"notebook.webp"}
-          tipo={"notebook"}
-        />
+        {products
+          .filter((product: product) => product.type === removeHashFromUrl(filter))
+          .map((_product: product) => (
+            <Product
+              key={_product.id}
+              price={_product.price}
+              title={_product.name}
+              discount={_product.promo}
+              src={_product.image || "default_image.webp"}
+              tipo={_product.type}
+            />
+          ))}
       </Products>
+      <Atendimento />
     </main>
   );
 }

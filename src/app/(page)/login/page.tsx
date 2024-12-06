@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Input from "@/Components/Input/Input";
-import { ArrowLeft, CircleUser } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 

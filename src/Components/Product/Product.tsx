@@ -5,7 +5,7 @@ interface ProductProps {
   price: number;
   title: string;
   src: string;
-  tipo:string;
+  tipo: string;
   discount?: number; // Porcentagem de desconto opcional
 }
 
@@ -31,7 +31,7 @@ export default function Product({
   return (
     <li className="inline-flex flex-grow max-w-[300px] flex-col bg-[#222] rounded-lg">
       <img
-        className="object-cover border-4  border-black rounded-t-lg"
+        className="object-cover border-4 border-black rounded-t-lg"
         src={src}
         alt="Produto"
       />
@@ -39,7 +39,9 @@ export default function Product({
         <h3 className="text-xl">{title}</h3>
         <h4>{tipo}</h4>
         <p className="text-green-500 text-xl">De: {formattedOriginalPrice}</p>
-        {discount !== 0 && <p className="text-red-600 text-xl">{discount}% de Desconto</p>}
+        {discount !== 0 && (
+          <p className="text-red-600 text-xl">{discount}% de Desconto</p>
+        )}
         <span className="text-red-600 text-2xl">
           Por: {formattedDiscountedPrice} à vista
         </span>

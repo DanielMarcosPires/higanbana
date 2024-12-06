@@ -1,0 +1,138 @@
+{
+    "higanbanaProducts": [
+        {
+        "id": 1,
+        "name": "Controle Gamesir",
+        "price": 100.0,
+        "promo":20,
+        "image":"controle.jpg",
+        "description": "Descrição do produto",
+        "type":"controle"
+    },
+    {
+        "id": 2,
+        "name": "Monitor",
+        "price": 890.0,
+        "promo":20,
+        "image":"monitor.jpg",
+        "description": "Descrição do produto",
+        "type":"monitor"
+    },{
+        "id": 3,
+        "name": "Microfone",
+        "price": 890.0,
+        "promo":20,
+        "image":"microfone.jpg",
+        "description": "Descrição do produto",
+        "type":"microfone"
+    },{
+        "id": 4,
+        "name": "Controle Gamesir",
+        "price": 100.0,
+        "promo":20,
+        "image":"controle.jpg",
+        "description": "Descrição do produto",
+        "type":"controle"
+    },
+    {
+        "id": 5,
+        "name": "Monitor",
+        "price": 890.0,
+        "promo":20,
+        "image":"monitor.jpg",
+        "description": "Descrição do produto",
+        "type":"monitor"
+    },{
+        "id": 6,
+        "name": "Microfone",
+        "price": 890.0,
+        "promo":20,
+        "image":"microfone.jpg",
+        "description": "Descrição do produto",
+        "type":"microfone"
+    },{
+        "id": 7,
+        "name": "Controle Gamesir",
+        "price": 100.0,
+        "promo":20,
+        "image":"controle.jpg",
+        "description": "Descrição do produto",
+        "type":"controle"
+    },
+    {
+        "id": 8,
+        "name": "Notebook",
+        "price": 890.0,
+        "promo":20,
+        "image":"notebook.jpg",
+        "description": "Descrição do produto",
+        "type":"promocao"
+    },{
+        "id": 9,
+        "name": "Microfone",
+        "price": 890.0,
+        "promo":20,
+        "image":"microfone.jpg",
+        "description": "Descrição do produto",
+        "type":"promocao"
+    },{
+        "id": 10,
+        "name": "Controle Gamesir",
+        "price": 100.0,
+        "promo":20,
+        "image":"controle.jpg",
+        "description": "Descrição do produto",
+        "type":"promocao"
+    },
+    {
+        "id": 11,
+        "name": "Monitor",
+        "price": 890.0,
+        "promo":20,
+        "image":"monitor.jpg",
+        "description": "Descrição do produto",
+        "type":"promocao"
+    },{
+        "id": 12,
+        "name": "Microfone",
+        "price": 890.0,
+        "promo":20,
+        "image":"microfone.jpg",
+        "description": "Descrição do produto",
+        "type":"promocao"
+    },{
+        "id": 13,
+        "name": "Notebook",
+        "price": 890.0,
+        "promo":20,
+        "image":"notebook.jpg",
+        "description": "Descrição do produto",
+        "type":"notebook"
+    },{
+        "id": 14,
+        "name": "Notebook",
+        "price": 890.0,
+        "promo":20,
+        "image":"notebook.jpg",
+        "description": "Descrição do produto",
+        "type":"notebook"
+    },{
+        "id": 15,
+        "name": "Notebook",
+        "price": 890.0,
+        "promo":20,
+        "image":"notebook.jpg",
+        "description": "Descrição do produto",
+        "type":"notebook"
+    },
+    {
+        "id": 16,
+        "name": "monitor",
+        "price": 890.0,
+        "promo":20,
+        "image":"monitor.jpg",
+        "description": "Descrição do produto",
+        "type":"monitor"
+    }
+]
+}
