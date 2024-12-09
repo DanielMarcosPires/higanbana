@@ -12,7 +12,7 @@
     {
         "id": 2,
         "name": "Monitor",
-        "price": 890.0,
+        "price": 1000.0,
         "promo":20,
         "image":"monitor.jpg",
         "description": "Descrição do produto",

@@ -1,11 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import Banner from "./Container/Banner/Banner";
 import Navbar from "./Container/Navbar/Navbar";
 import LinkNavigator from "@/Components/LinkNavigator";
 import Products from "./Container/Products/Products";
-import Product from "@/Components/Product/Product";
 import Atendimento from "./Container/Atendimento/Atendimento";
+import { MongoProduct } from "./Container/Products/MongoProduct/MongoProduct";
 
 interface product {
   id: number;
@@ -17,14 +16,6 @@ interface product {
   type: string;
 }
 export default function Main() {
-  const [products, setProducts] = useState([]);
-  const [filter, setFilter] = useState("");
-  useEffect(() => {
-    fetch("http://localhost:3001/higanbanaProducts")
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.log(error));
-  }, []);
 
   function removeHashFromUrl(url: string) {
     return url.replace(/\/?#/, "");
@@ -32,7 +23,7 @@ export default function Main() {
   console.log();
   return (
     <main
-      className="flex-grow overflow-y-auto border"
+      className="flex-grow overflow-y-auto"
       style={{
         overflow: "auto",
         scrollbarWidth: "none",
@@ -41,34 +32,21 @@ export default function Main() {
     >
       <Banner className="h-[350px] md:h-auto object-cover" style={{objectPosition:"46% 0"}} src="banner.png" alt="hero" />
       <Navbar>
-        <LinkNavigator href={"#promocao"} extract={setFilter}>
+        <LinkNavigator href={"#promocao"}>
           Promoção
         </LinkNavigator>
-        <LinkNavigator href={"#microfone"} extract={setFilter}>
+        <LinkNavigator href={"#microfone"}>
           Microfone
         </LinkNavigator>
-        <LinkNavigator href={"#notebook"} extract={setFilter}>
+        <LinkNavigator href={"#notebook"}>
           Notebooks
         </LinkNavigator>
-        <LinkNavigator href={"#monitor"} extract={setFilter}>
+        <LinkNavigator href={"#monitor"}>
           Monitores
         </LinkNavigator>
       </Navbar>
       <Products>
-        {products
-          .filter(
-            (product: product) => product.type === removeHashFromUrl(filter)
-          )
-          .map((_product: product) => (
-            <Product
-              key={_product.id}
-              price={_product.price}
-              title={_product.name}
-              discount={_product.promo}
-              src={_product.image || "default_image.webp"}
-              tipo={_product.type}
-            />
-          ))}
+        <MongoProduct />
       </Products>
         <Atendimento />
     </main>

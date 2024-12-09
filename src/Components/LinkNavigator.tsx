@@ -5,11 +5,9 @@ import "./css/style.css";
 
 interface LinkNavigatorProps extends ComponentProps<"a"> {
   href: string;
-  extract: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function LinkNavigator({
-  extract,
   href,
   children,
   ...props
@@ -26,9 +24,7 @@ export default function LinkNavigator({
     };
   }, []);
 
-  useEffect(() => {
-    extract(currentHash);
-  }, [currentHash, extract]);
+ 
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

@@ -15,7 +15,9 @@ export default function Atendimento() {
               className="rounded-l-xl px-4 py-3 w-2/5 text-lg text-black"
               placeholder="Digite aqui!..."
             />
-            <button className="flex rounded-r-lg bg-[#444] justify-center items-center border w-16"><Search /></button>
+            <button className="flex rounded-r-lg bg-[#444] justify-center items-center border w-16">
+              <Search />
+            </button>
           </div>
         </fieldset>
       </form>
