@@ -16,7 +16,14 @@ function formatPrice(price: number) {
 function calculateDiscountPrice(price: number, discount: number) {
   return price - price * (discount / 100);
 }
+function formatName(title: string) {
+  const lastLetter = title[0].toLocaleUpperCase();
+  const remainingName = title.slice(1);
+  const formattedName = lastLetter + remainingName;
 
+  console.log(formattedName);
+  return formattedName;
+}
 export default function Product({
   price,
   src,
@@ -27,7 +34,8 @@ export default function Product({
   const formattedOriginalPrice = formatPrice(price);
   const discountedPrice = calculateDiscountPrice(price, discount);
   const formattedDiscountedPrice = formatPrice(discountedPrice);
-
+  const formattedName = formatName(title);
+  const formettedTipo = formatName(tipo);
   return (
     <li className="inline-flex flex-grow max-w-[300px] flex-col bg-[#222] rounded-lg">
       <img
@@ -36,8 +44,8 @@ export default function Product({
         alt="Produto"
       />
       <div className="flex flex-col p-2">
-        <h3 className="text-xl">{title}</h3>
-        <h4>{tipo}</h4>
+        <h3 className="text-xl">{formattedName}</h3>
+        <h4>{formettedTipo}</h4>
         <p className="text-green-500 text-xl">De: {formattedOriginalPrice}</p>
         {discount !== 0 && (
           <p className="text-red-600 text-xl">{discount}% de Desconto</p>
