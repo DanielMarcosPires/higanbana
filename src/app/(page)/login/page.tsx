@@ -1,10 +1,19 @@
+"use server"
 /* eslint-disable @next/next/no-img-element */
 import Input from "@/Components/Input/Input";
+import { Users } from "@/database/mongodb";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import Form from "./Form/Form";
+export default async function page() {
+  const users = await Users();
 
-export default function page() {
+  console.log(users[0].password)
+  // console.log(await argon2.verify(users[0].password, "Adimin1@#"));
+  //Adimin1@#
+ 
+  
   return (
     <ul className="flex justify-between h-screen">
       <li className="flex flex-col items-center justify-evenly flex-grow">
@@ -15,21 +24,24 @@ export default function page() {
                 <ArrowLeft color="#fff" />
               </Link>
             </header>
-            <section className="flex flex-col  gap-5 items-center ">
+            <section className="flex flex-col  gap-5 items-center">
               <div className="flex flex-col gap-2 items-center">
                 <img width={150} src="profile.svg" alt="" />
                 <h2 className="font-bold text-xl">Seja bem vindo!</h2>
               </div>
-              <form
+              <Form
                 className="flex w-full items-center justify-center gap-3 flex-col py-2"
-                action=""
               >
-                <Input>Login</Input>
-                <Input type="password">Password</Input>
+                <Input name="login" type="text" required>
+                  Login
+                </Input>
+                <Input name="password" type="password" required>
+                  Password
+                </Input>
                 <button className="bg-red-800 p-4 rounded-xl font-bold w-[220px]">
                   Entrar
                 </button>
-              </form>
+              </Form>
             </section>
           </main>
         </div>

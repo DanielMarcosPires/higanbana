@@ -28,36 +28,36 @@ function isItemProducts(doc: Document): doc is WithId<ItemProducts> {
 }
 
 export async function MongoProduct() {
-  try {
-    const response = await client.connect();
-    const db = response.db("produtos");
-    const collection = await db.collection("product");
-    const docs = await collection.find({}).toArray();
+  let success = true;
+  let list: WithId<ItemProducts>[] = [];
 
-    const list: WithId<ItemProducts>[] = docs.filter(isItemProducts);
+  while (success) {
+    try {
+      const response = await client.connect();
+      const db = response.db("produtos");
+      const collection = await db.collection("product");
+      const docs = await collection.find({}).toArray();
 
-    return (
-      <>
-        {list.map((item) => (
-          <Product
-            key={item._id.toString()}
-            price={item.price}
-            discount={item.promo}
-            title={item.name}
-            src={item.image}
-            tipo={item.type}
-          />
-        ))}
-      </>
-    );
-  } catch (error) {
-    return (
-      <>
-        <div className="flex gap-2 items-center">
-          <Loader2 className="animate-spin" />
-          <h2 className="text-2xl">Loading...</h2>
-        </div>
-      </>
-    );
+      list = docs.filter(isItemProducts);
+      success = false;
+    } catch (error) {
+      console.error(`Erro ao conectar ao MongoDB: ${error}`);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
   }
+
+  return (
+    <>
+      {list.map((item) => (
+        <Product
+          key={item._id.toString()}
+          price={item.price}
+          discount={item.promo}
+          title={item.name}
+          src={item.image}
+          tipo={item.type}
+        />
+      ))}
+    </>
+  );
 }

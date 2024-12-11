@@ -1,11 +1,18 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { Document, MongoClient, ServerApiVersion, WithId } from "mongodb";
+import * as argon2 from "argon2";
 
 const PASSWORD = process.env.PASSWORD;
 const USERNAMEKEY = process.env.USERNAMEKEY;
 
 
 const uri = `mongodb+srv://${USERNAMEKEY}:${PASSWORD}@products.fvbvo.mongodb.net/?retryWrites=true&w=majority&appName=products`;
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+
+interface UsersInfo {
+    username: string;
+    password: string;
+    status: boolean
+}
+
 export const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -13,6 +20,13 @@ export const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
+ 
+export const Users = async ():Promise<WithId<UsersInfo>[] | undefined> => {
+    await client.connect();
+    const collection = client.db('produtos').collection<UsersInfo>('loginAccess');
+    const docs = await collection.find({}).toArray();
+    return docs
+}
 
 async function run() {
     try {
